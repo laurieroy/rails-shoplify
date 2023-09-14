@@ -2,13 +2,27 @@
 
 <h1>Products</h1>
 
-<div id="products">
+<table id="products">
+<thead class="">
+<tr class="">
+<th class="">Name</th>
+<th class="">Price</th>
+<th class="" colspan="3"></th>
+</tr>
+</thead>
+
+<tbody>
   <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
+  <tr>
+    <td><%= product %></td>
+    <td><%= product.price %></td>
+    <td><%= link_to "Show", product %></td>
+    <td><%= link_to "Edit", edit_product_path(product) %></td>
+    <td><%= link_to "Delete", product, method: :delete, data: { confirm: "Are you sure?"} %></td>
+  </tr>
   <% end %>
-</div>
+</tbody>
+
+</table>
 
 <%= link_to "New product", new_product_path %>
